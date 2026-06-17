@@ -22,4 +22,7 @@ public class Produto {
 
     @Column(nullable = false)          // coluna obrigatória
     private BigDecimal preco;
+
+    @Column(nullable = false)
+    private String descricao; // campo sensível — não vai aparecer no response
 }

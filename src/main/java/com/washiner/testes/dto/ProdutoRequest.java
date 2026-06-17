@@ -4,5 +4,6 @@ import java.math.BigDecimal;
 
 public record ProdutoRequest(
         String nome,
-        BigDecimal preco
+        BigDecimal preco,
+        String descricao  // cliente manda a descrição
 ) {}

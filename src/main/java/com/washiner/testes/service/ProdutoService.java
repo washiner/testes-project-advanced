@@ -17,7 +17,7 @@ public class ProdutoService {
 
     // CRIAR
     public ProdutoResponse criar(ProdutoRequest request) {
-        Produto produto = new Produto(null, request.nome(), request.preco()); // monta a entidade
+        Produto produto = new Produto(null, request.nome(), request.preco(), request.descricao()); // monta a entidade
         Produto salvo = repository.save(produto);                             // salva no banco
         return new ProdutoResponse(salvo.getId(), salvo.getNome(), salvo.getPreco()); // devolve o response
     }
@@ -43,6 +43,7 @@ public class ProdutoService {
                 .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
         produto.setNome(request.nome());                                     // atualiza o nome
         produto.setPreco(request.preco());                                   // atualiza o preço
+        produto.setDescricao(request.descricao());
         Produto salvo = repository.save(produto);                            // salva as alterações
         return new ProdutoResponse(salvo.getId(), salvo.getNome(), salvo.getPreco());
     }
